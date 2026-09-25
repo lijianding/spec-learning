@@ -1,200 +1,402 @@
-# 01 软件工程与 Spec 岗位认知
+# 01 软件工程与 Spec Engineer 岗位认知
 
-## 本章目标
+> 本章目标：理解 Spec Engineer 在软件生命周期中的位置、与 PM/BA/Developer/QA/Architect 的分工，以及为什么“把模糊需求变成无歧义规格”是一项独立工程能力。
 
-学完后你应该能够：
+## 1. 软件开发不是“需求来了就写代码”
 
-- 解释软件从需求到上线的大致生命周期
-- 说明 Spec Engineer 与产品、BA、架构师、开发、测试的区别
-- 识别一条需求从模糊想法到可开发规格需要经历哪些步骤
-- 理解为什么“需求正确”与“实现正确”是两个不同问题
+一个商业软件通常经历：
 
-## 一、软件开发不是“直接写代码”
+```text
+Business Problem
+↓
+Product Goal
+↓
+Requirements Elicitation
+↓
+Analysis
+↓
+Specification
+↓
+Architecture / Design
+↓
+Implementation
+↓
+Testing
+↓
+Release
+↓
+Operation
+↓
+Feedback / Change
+```
 
-一个功能通常会经历：
+现实中并非完全线性，而是反复迭代。
 
-**问题/目标 → 需求获取 → 需求分析 → 规格说明 → 设计 → 开发 → 测试 → 发布 → 运行反馈 → 变更**
+Spec Engineer 主要参与：
+- Requirements
+- Analysis
+- Specification
+- Validation
+- Traceability
+- Change
 
-Spec Engineer 主要工作在“需求分析—规格说明—验证—变更”之间，但需要理解整个链路。
+但必须理解后续设计、开发、测试如何消费 Spec。
 
-## 二、几个常见角色
+## 2. “Spec Engineer”为什么名字不统一
 
-### 产品经理 / Product Manager
+不同公司可能叫：
 
-关注：
+- Specification Engineer
+- Requirements Engineer
+- Software Requirements Engineer
+- System Requirements Engineer
+- System Analyst
+- Business/System Analyst
+- Functional Analyst
 
-- 为什么做
-- 为谁做
-- 有什么业务价值
-- 优先级是什么
+岗位边界会不同。
 
-### Business Analyst / BA
+因此不要只学岗位名称，要学可迁移能力。
 
-关注：
+本仓库采用最稳定的核心：
 
-- 当前业务怎么运行
-- 用户真正需要什么
-- 业务规则是什么
-- 流程如何优化
+> Requirements Engineering + Technical Specification + Verification。
 
-### Spec / Requirements Engineer
+## 3. Product Manager
 
-关注：
+主要关注：
 
-- 系统必须表现成什么样
-- 输入、输出、状态、规则、异常是什么
-- 需求之间是否冲突
-- 是否可以实现和验证
-- 如何追踪需求到设计、开发与测试
+- 为什么做？
+- 为谁做？
+- 价值是什么？
+- 优先级？
+- Roadmap？
 
-### Software Architect
+示例：
 
-关注：
+> “我们要减少患者电话预约比例。”
 
-- 系统如何组织
-- 组件如何协作
-- 如何满足可靠性、安全、性能、扩展性
+这是产品目标。
 
-### Developer
+## 4. Business Analyst
 
-关注：
+主要关注：
 
-- 如何通过代码实现
+- 当前流程
+- 业务规则
+- 用户需求
+- 流程优化
+- 业务与系统之间的映射
 
-### Tester / QA
+有些公司 BA 与 Spec/Requirements Engineer 高度重合。
 
-关注：
+## 5. Spec / Requirements Engineer
 
-- 如何证明实现符合要求
-- 什么场景会失败
-- 边界和异常是否正确
+主要关注：
 
-## 三、需求正确 vs 实现正确
+- 系统准确应该怎样表现？
+- 条件？
+- 输入？
+- 输出？
+- 状态？
+- 错误？
+- 数据？
+- 权限？
+- NFR？
+- 如何验证？
+- 如何追踪？
 
-假设需求写成：
+价值是：
 
-“连续登录失败 5 次后锁定账户。”
+> 减少不同角色对同一句需求的不同解释。
 
-这句话看起来很明确，实际上至少缺少：
+## 6. Architect
 
-- 5 次是在多长时间窗口内？
-- 成功一次后计数是否清零？
-- 锁定多久？
-- 管理员可否解锁？
-- 多设备同时尝试怎么计数？
-- 锁定后 API 返回什么？
-- 是否写审计日志？
-- 是否需要通知用户？
+主要关注：
 
-开发人员可以完全按照自己的理解实现，但不同开发者可能做出不同系统。
+- 系统边界
+- 组件
+- 技术方案
+- 数据架构
+- 可靠性
+- 性能
+- 安全
+- Trade-off
 
-因此 Spec Engineer 的价值不是“复述需求”，而是**减少系统行为的解释空间**。
+Spec Engineer 不应代替 Architect，但需求会直接影响架构。
 
-## 四、Spec 的四个层次
+## 7. Developer
 
-### 1. Business Requirement
+主要关注：
 
-描述业务目标。
+> 如何实现已明确的行为。
 
-例：
+现实中 Developer 也会参与需求澄清，因为很多歧义只有实现时才暴露。
 
-“降低人工预约登记工作量。”
+## 8. QA / Tester
 
-### 2. User Requirement
+主要关注：
 
-描述用户需要完成什么。
+> 如何证明实现符合要求？
 
-例：
+优秀 QA 会不断问：
+- 边界？
+- 异常？
+- 权限？
+- 状态？
+- 并发？
 
-“患者可以在线选择医生和时间段预约。”
+因此 QA 是 Spec Review 的重要参与者。
 
-### 3. System / Software Requirement
+## 9. 一张对照表
 
-描述系统行为。
+| 角色 | 核心问题 |
+|---|---|
+| PM | 为什么做 / 做什么 |
+| BA | 业务怎样工作 |
+| Spec/RE | 系统准确必须怎样表现 |
+| Architect | 系统如何组织以满足要求 |
+| Developer | 如何实现 |
+| QA | 如何证明正确 |
 
-例：
+实际组织中会重叠，不要把边界理解得过于僵硬。
 
-“当用户提交预约时，系统必须验证该号源仍可预约。”
+## 10. 一个模糊需求的变化过程
 
-### 4. Technical Specification
+原始：
 
-描述接口、数据、错误处理、约束等。
+> “登录失败 5 次锁账号。”
 
-例：
+听起来很清楚，但至少缺：
 
-- API：POST /appointments
-- 请求字段：doctorId、slotId、patientId
-- 冲突返回：409
-- 创建成功返回：201
-- appointment.status 初始值：BOOKED
+- 连续还是累计？
+- 时间窗口？
+- 成功一次是否清零？
+- 锁多久？
+- 管理员能否解锁？
+- 不同设备是否共享计数？
+- 密码和 OTP 是否一起算？
+- 返回错误如何避免泄漏账号状态？
+- 是否记录审计？
+- 是否通知用户？
 
-Spec Engineer 可能根据组织分工负责其中一个或多个层次。
+Spec Engineer 的工作就是把这些“隐含决定”暴露出来。
 
-## 五、功能需求与非功能需求
+## 11. Business Requirement → System Requirement
 
-### 功能需求
+Business：
 
-回答“系统做什么”。
+> 降低账号暴力破解风险。
+
+System：
+
+```
+AUTH-LOCK-001
+如果同一账号在 15 分钟内连续发生 5 次无效密码认证，
+系统必须阻止后续密码登录 30 分钟。
+```
+
+继续需要确认：
+- 这些数字谁决定？
+- MFA 是否受影响？
+- Admin policy？
+- User notification？
+
+## 12. 正确实现 vs 正确需求
+
+两个问题不同：
+
+### Build the system right
+实现是否符合 Spec？
+
+### Build the right system
+Spec 是否满足真正业务目标？
 
 例如：
+- Developer 完全按错误 Spec 实现
+- Code 没 Bug
+- 业务仍失败
 
-- 创建预约
-- 取消预约
-- 查询排班
+所以 Requirements Validation 很重要。
 
-### 非功能需求
+## 13. Spec 的抽象层次
 
-回答“系统做得怎么样”。
+可以理解为：
 
-例如：
+### Business
+为什么？
 
-- 95% 查询请求在 300 ms 内返回
-- 月可用性达到 99.9%
-- 敏感数据传输必须加密
-- 关键操作保留审计日志
-- 系统支持至少 1,000 个并发用户
+### User
+用户要什么？
 
-Microsoft Azure Architecture Center 明确将功能需求与非功能需求区分，并指出可扩展性、可用性、延迟等会直接影响架构和技术选择。
+### System
+系统做什么？
 
-## 六、需求到测试的闭环
+### Technical Contract
+接口/数据/状态如何定义？
 
-成熟团队中的需求不应该停留在文档。
+### Verification
+怎么证明？
 
-理想链路：
+优秀 Spec Engineer 要能上下移动，而不是只停留在页面需求。
 
-Business Goal
-→ Requirement
+## 14. 什么不是 Spec Engineer 的核心工作
+
+不是：
+- 把会议录音转成 Word
+- 机械抄 Product 文档
+- 只画原型
+- 只维护 Jira
+- 替 Architect 决定所有技术
+- 替 Product 决定所有业务
+- 替 QA 写完所有测试
+
+核心是：
+
+> 把需求变成一致、可实现、可验证、可追踪的工程事实。
+
+## 15. 软件开发模型
+
+### Waterfall
+阶段较明确，文档和审批通常更正式。
+
+### Agile
+迭代、小批量交付、持续 Refinement。
+
+### DevOps
+开发、交付、运维进一步连通。
+
+Spec Engineering 在不同模式下形式不同，但“清晰和验证”不会消失。
+
+## 16. AI Coding 时代变化
+
+过去：
+
+```
+需求
+→ Developer 理解
+→ Code
+```
+
+现在越来越可能：
+
+```
+需求
 → Spec
-→ Design
-→ Development Task
-→ Test Case
-→ Test Result
-→ Release
+→ AI Coding Agent / Developer
+→ Automated Test
+→ Verification
+```
 
-如果出现缺陷，可以反向追踪：
+因此未来重要能力更加集中在：
+- Context
+- Constraints
+- Contract
+- Verification
 
-“哪个 Requirement 定义了这个行为？”
+不是“完全不需要人写代码”，而是高质量输入与验证变得更重要。
 
-如果需求变更，可以正向追踪：
+## 17. 岗位能力地图
 
-“哪些 API、表字段、测试用例会受影响？”
+### Business
+- Stakeholder
+- Process
+- Rule
 
-这就是 Traceability（可追溯性）。
+### Requirement
+- Elicitation
+- Analysis
+- Documentation
+- Validation
+- Management
 
-## 七、本章练习
+### Modeling
+- UML
+- BPMN
+- State
+- Sequence
 
-针对“医疗预约 SaaS”，完成以下内容：
+### Technical
+- HTTP
+- API
+- Database
+- Architecture
+- Security
 
-1. 写 3 条业务目标。
-2. 写 5 条用户需求。
-3. 从其中 1 条用户需求拆出至少 5 条系统需求。
-4. 给每条系统需求分配唯一 ID。
-5. 标记哪些是功能需求，哪些是非功能需求。
-6. 写出产品、Spec、开发、测试在该需求中的职责。
+### Quality
+- Acceptance
+- Testing
+- NFR
 
-## 推荐官方资料
+### Collaboration
+- Git
+- Jira
+- Confluence
+- Review
+- Change
 
-- IREB CPRE Foundation：<https://cpre.ireb.org/en/concept/foundationlevel>
-- IBM：什么是需求管理：<https://www.ibm.com/cn-zh/think/topics/what-is-requirements-management>
-- Microsoft Learn 软件开发基础：<https://learn.microsoft.com/zh-cn/shows/software-development-fundamentals/01>
-- Microsoft Azure：针对业务需求进行构建：<https://learn.microsoft.com/zh-cn/azure/architecture/guide/design-principles/build-for-business>
+### AI
+- Context Engineering
+- Structured Prompt
+- AI Review
+- Verification
+
+## 18. 本章练习
+
+原始：
+
+> “我们需要一个文件上传功能。”
+
+请写至少 15 个需要澄清的问题，例如：
+- 谁上传？
+- 文件类型？
+- 最大大小？
+- 病毒扫描？
+- 重名？
+- 存储？
+- 权限？
+- 下载？
+- 删除？
+- 失败？
+- 进度？
+- 审计？
+
+然后把问题分类：
+- Business
+- Functional
+- Data
+- Security
+- NFR
+- Technical
+
+## 19. 自测
+
+1. PM 与 Spec Engineer 的关注点区别？
+2. BA 与 Requirements Engineer 为什么可能重叠？
+3. Developer 为什么也要参加需求 Review？
+4. Verification 与 Validation 为什么不同？
+5. “支持上传文件”为什么不够开发？
+6. AI Coding 为什么反而提高了 Spec 的重要性？
+
+## 20. 本章完成标准
+
+你能够清楚向别人解释：
+
+> Spec Engineer 不是“文档秘书”，而是把业务意图转换成可实现、可验证软件契约的人。
+
+## 21. 权威原始资料
+
+1. IREB CPRE Foundation  
+https://cpre.ireb.org/en/concept/foundationlevel
+
+2. IREB Foundation Syllabus / 中文下载  
+https://cpre.ireb.org/en/downloads-and-resources/downloads
+
+3. IBM Requirements Management  
+https://www.ibm.com/cn-zh/think/topics/what-is-requirements-management
+
+4. Microsoft Software Development Fundamentals  
+https://learn.microsoft.com/zh-cn/shows/software-development-fundamentals/
+
+5. Microsoft Architecture Design Specification  
+https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-design-specification
