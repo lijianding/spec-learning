@@ -1,115 +1,419 @@
 # Spec Engineer 从 0 到可独立工作的中文学习仓库
 
-> 目标：从“不了解软件规格说明”开始，逐步掌握需求工程、软件规格说明、建模、API、数据库、非功能需求、测试与追踪、协作工具，以及 AI 辅助 Spec 工作流，最终能够独立完成一个商业 SaaS 项目的规格设计。
+> 这是一个面向零基础学习者的 **Specification / Requirements Engineer 中文自学教材仓库**。目标不是“知道几个需求术语”，而是学完后能够独立把模糊业务需求转化为可开发、可测试、可追踪、可交付的商业软件 Spec。
 
-## 1. 为什么这样设计课程
+---
 
-“Spec Engineer”在不同公司中可能对应 Requirements Engineer、System/Software Specification Engineer、Business/System Analyst 等岗位。这个仓库不依赖某一个公司的岗位名称，而是以行业中最稳定、最可迁移的能力体系组织：
+## 你可以怎样使用这个仓库
 
-1. **需求工程主线**：以 IREB CPRE Foundation 的知识结构为骨架，覆盖需求获取、文档化、验证、管理、冲突解决和工具支持。
-2. **规格表达能力**：把自然语言需求转换为无歧义、可开发、可测试、可追踪的 Spec。
-3. **软件技术理解**：掌握 HTTP/API、关系数据库、系统架构、身份认证与权限、安全、可靠性、性能等。
-4. **验证能力**：学习测试基础、验收标准、边界条件、需求追踪矩阵与缺陷反馈。
-5. **工程协作能力**：Git/GitHub、Jira/Confluence 思维、版本管理、评审与变更管理。
-6. **AI 时代能力**：学习如何用 AI 辅助需求澄清、生成草稿、发现歧义、生成测试点，同时保留人工审查和责任边界。
+建议严格按 00 → 15 顺序学习。
 
-IREB 官方将 Foundation Level 定义为需求工程入门，核心包括获取、记录、验证、管理需求以及根据项目情境调整需求工程过程；这与 Spec Engineer 的核心能力高度一致。
+每一章都尽量包含：
 
-## 2. 学习顺序
+- 中文概念讲解
+- 原理
+- 真实软件案例
+- 反例
+- 实操步骤
+- 练习
+- 自测
+- 完成标准
+- 官方/权威原始链接
 
-请按编号顺序学习，不建议跳章。
+因此你可以：
 
-| 阶段 | 章节 | 学完后你应该能做到 |
-|---|---|---|
-| 入门 | 00-02 | 理解软件开发流程、Spec 岗位边界、需求工程基本概念 |
-| 需求分析 | 03-05 | 从访谈/业务材料中提取需求，建模并写成高质量规格 |
-| 技术规格 | 06-10 | 写用户故事、接口规格、数据规格、架构约束和非功能需求 |
-| 质量验证 | 11 | 把需求转成可测试验收标准并建立追踪 |
-| 工程协作 | 12 | 用 Git/GitHub 与团队管理文档、变更和评审 |
-| AI 增强 | 13 | 用 AI 提升需求工程效率，同时控制幻觉与遗漏 |
-| 综合实战 | 14 | 完整交付一个 SaaS 项目的 Spec 包 |
-| 求职验收 | 15 | 自测能力、准备作品集和面试 |
+> **先只看 GitHub 仓库正文完成主体学习，再根据每章末尾原链接继续深入。**
 
-## 3. 目录
+---
 
-- [00 学习方法与环境准备](docs/00-学习方法与环境准备.md)
-- [01 软件工程与 Spec 岗位认知](docs/01-软件工程与Spec岗位认知.md)
-- [02 需求工程基础](docs/02-需求工程基础.md)
-- [03 需求获取与利益相关者分析](docs/03-需求获取与利益相关者分析.md)
-- [04 需求建模：UML / BPMN / Mermaid](docs/04-需求建模.md)
-- [05 SRS 与高质量 Spec 写作](docs/05-SRS与高质量Spec写作.md)
-- [06 敏捷需求：Epic / User Story / Acceptance Criteria](docs/06-敏捷需求.md)
-- [07 系统设计与架构基础](docs/07-系统设计与架构基础.md)
-- [08 HTTP、REST API 与 OpenAPI](docs/08-API与OpenAPI规格.md)
-- [09 数据库与数据规格](docs/09-数据库与数据规格.md)
-- [10 非功能需求：安全、性能、可靠性与可观测性](docs/10-非功能需求.md)
-- [11 测试设计与需求可追溯性](docs/11-测试与需求追踪.md)
-- [12 Git / GitHub / Jira / Confluence 协作](docs/12-工程协作.md)
-- [13 AI 辅助 Spec 工程](docs/13-AI辅助Spec工程.md)
-- [14 综合实战：医疗预约 SaaS Spec](docs/14-综合实战.md)
-- [15 能力评估、作品集与面试](docs/15-能力评估与面试.md)
-- [权威学习资源索引](resources/权威学习资源索引.md)
+# 完整学习路线
+
+## 第一阶段：零基础软件与岗位认知
+
+### [00 从 0 开始：学习方法、环境与最小技术基础](docs/00-学习方法与环境准备.md)
+
+学习：
+- 前端
+- 后端
+- 数据库
+- API
+- JSON/YAML
+- SQL
+- Git
+- HTTP
+- Authentication / Authorization
+
+### [01 软件工程与 Spec Engineer 岗位认知](docs/01-软件工程与Spec岗位认知.md)
+
+学习：
+- 软件生命周期
+- PM / BA / Spec / Architect / Developer / QA 区别
+- Verification / Validation
+- Spec 的抽象层次
+- AI Coding 时代的 Spec Engineer
+
+---
+
+# 第二阶段：Requirements Engineering
+
+### [02 需求工程基础](docs/02-需求工程基础.md)
+
+学习：
+- Business / User / System Requirement
+- Functional / Non-functional
+- Constraint
+- Business Rule
+- Requirement Quality
+- Requirement Attribute
+- Baseline
+- Change
+- Traceability
+
+### [03 需求获取与利益相关者分析](docs/03-需求获取与利益相关者分析.md)
+
+学习：
+- Stakeholder Analysis
+- Interview
+- Observation
+- Workshop
+- Document Analysis
+- Prototype
+- As-Is / To-Be
+- Fact / Assumption / Decision / Question
+- Conflict Analysis
+
+### [04 需求建模](docs/04-需求建模.md)
+
+学习：
+- Flowchart
+- BPMN
+- Use Case
+- Sequence Diagram
+- State Machine
+- ER Diagram
+- Context Diagram
+- Mermaid
+
+### [05 SRS 与高质量 Spec 写作](docs/05-SRS与高质量Spec写作.md)
+
+学习：
+- SRS Structure
+- Requirement Pattern
+- Preconditions
+- Postconditions
+- Exceptions
+- Boundary
+- Time
+- Error Model
+- Consistency
+- Definition of Ready
+- Spec Review
+
+### [06 敏捷需求](docs/06-敏捷需求.md)
+
+学习：
+- Epic
+- User Story
+- 3C
+- Acceptance Criteria
+- INVEST
+- Example Mapping
+- Backlog Refinement
+- Definition of Ready / Done
+
+---
+
+# 第三阶段：技术规格能力
+
+### [07 系统设计与架构基础](docs/07-系统设计与架构基础.md)
+
+学习：
+- System Boundary
+- Context / Container
+- C4
+- Sync / Async
+- Retry
+- Circuit Breaker
+- Transaction
+- Concurrency
+- Consistency
+- Cache
+- Queue
+- Idempotency
+- ADR
+
+### [08 HTTP、REST API 与 OpenAPI](docs/08-API与OpenAPI规格.md)
+
+学习：
+- HTTP Request / Response
+- Method
+- Status Code
+- Resource
+- Path / Query / Body
+- Schema
+- Validation
+- Error Model
+- Pagination
+- Filtering / Sorting
+- Idempotency
+- Authorization
+- Rate Limit
+- Versioning
+- OpenAPI
+
+### [09 数据库与数据规格](docs/09-数据库与数据规格.md)
+
+学习：
+- Table / Row / Column
+- PK / FK / Unique
+- Entity Relationship
+- Data Dictionary
+- NULL
+- Transaction
+- Data Lifecycle
+- Soft Delete
+- Audit
+- Sensitive Data
+- Data Ownership
+- Migration
+- SQL
+
+### [10 非功能需求](docs/10-非功能需求.md)
+
+学习：
+- Performance
+- Latency
+- P95/P99
+- Throughput
+- Capacity
+- Availability
+- Reliability
+- RTO / RPO
+- Scalability
+- Security
+- Audit
+- Observability
+- Compatibility
+- Backup / Restore
+
+---
+
+# 第四阶段：验证与工程协作
+
+### [11 测试设计与需求追踪](docs/11-测试与需求追踪.md)
+
+学习：
+- Verification / Validation
+- Test Basis
+- Positive / Negative
+- Equivalence Partitioning
+- Boundary Value Analysis
+- Decision Table
+- State Transition
+- Authorization Test
+- Concurrency Test
+- Traceability Matrix
+- Coverage
+- Defect Triage
+
+### [12 Git / GitHub / Jira / Confluence 工程协作](docs/12-工程协作.md)
+
+学习：
+- Repository / Commit / Branch / PR
+- Spec Review
+- Jira
+- Confluence
+- Single Source of Truth
+- Baseline
+- Change Request
+- ADR
+- Git-based Spec workflow
+
+---
+
+# 第五阶段：AI + Spec
+
+### [13 AI 辅助 Spec 工程](docs/13-AI辅助Spec工程.md)
+
+学习：
+- AI4RE
+- AI 需求澄清
+- Context Engineering
+- Structured Prompt
+- Spec-driven Development
+- AI Coding Task Spec
+- Fact / Inference / Suggestion / Assumption
+- AI-generated Test
+- AI Spec Verification
+- Responsible AI-assisted development
+
+---
+
+# 第六阶段：完整项目
+
+### [14 综合实战：医疗预约 SaaS](docs/14-综合实战.md)
+
+完整包含：
+
+- Vision / Scope
+- Stakeholder
+- Glossary
+- Business Rule
+- State Model
+- 认证
+- 医生
+- Slot
+- Appointment
+- Permission Matrix
+- API
+- Data Model
+- NFR
+- Acceptance Criteria
+- Test
+- Traceability
+- Open Questions
+- Change Request
+
+### [15 能力评估、作品集与面试](docs/15-能力评估与面试.md)
+
+学习：
+- 初级/中级/高级能力
+- Portfolio
+- 高频面试题
+- Case Interview
+- 自评
+- 毕业标准
+
+---
+
+# 必做毕业项目
+
+完成正文后，不要直接结束。
+
+请做：
+
+### [企业员工请假 SaaS 毕业项目](exercises/毕业项目任务书.md)
+
+需要独立交付：
+
+- 40+ System Requirements
+- 15+ NFR
+- Flow / Use Case / Sequence / State / ER
+- API
+- Data
+- Permission
+- 25+ Acceptance Criteria
+- 50+ Test Cases
+- Traceability
+- Change Request
+- AI Coding Spec
+
+完成后即可作为 Spec / Requirements Engineer 作品集基础。
+
+---
+
+# 可直接复制使用的模板
+
 - [SRS 模板](templates/SRS模板.md)
 - [API Spec 模板](templates/API-Spec模板.md)
-- [User Story 与验收标准模板](templates/User-Story模板.md)
-- [Spec 评审清单](templates/Spec评审清单.md)
-- [需求追踪矩阵模板](templates/需求追踪矩阵.csv)
+- [User Story 与 Acceptance Criteria 模板](templates/User-Story模板.md)
+- [Spec Review Checklist](templates/Spec评审清单.md)
+- [需求追踪矩阵 CSV](templates/需求追踪矩阵.csv)
+- [Change Request 模板](templates/变更请求模板.md)
+- [Data Dictionary 模板](templates/数据字典模板.md)
+- [Permission Matrix 模板](templates/权限矩阵模板.md)
+- [Decision Log / ADR 模板](templates/Decision-Log模板.md)
+- [Open Questions / Assumptions 模板](templates/Open-Questions模板.md)
 
-## 4. 学习方法
+---
 
-每一章都按以下方式学习：
+# 权威学习资料
 
-**第一遍：理解概念。** 先阅读本仓库中文讲义，不急着背术语。
+集中整理在：
 
-**第二遍：看官方资料。** 每章末尾提供官方/权威链接。优先选择中文页面；只有标准本身缺少中文版本时才保留英文原文。
+### [权威学习资源索引](resources/权威学习资源索引.md)
 
-**第三遍：动手产出。** Spec 工程师不是“知道”就够了。每章都必须完成对应产出，例如利益相关者表、用例、状态机、API 表、数据字典、验收标准。
+主要来源：
 
-**第四遍：评审。** 用本仓库的 Spec 评审清单检查：是否有歧义、是否可测试、异常是否完整、是否有追踪关系。
+- IREB / CPRE
+- IBM Requirements Management
+- Atlassian Agile / Jira / Confluence
+- OMG UML / BPMN
+- MDN HTTP
+- Microsoft Learn / Azure Architecture Center
+- OpenAPI Initiative
+- OWASP
+- ISTQB / CSTQB
+- GitHub Docs
+- IREB AI4RE
+- OpenAI / Microsoft AI-assisted development resources
 
-## 5. 学习完成标准
+IREB 的 CPRE Foundation Level 是本仓库 Requirements Engineering 主线的重要知识骨架；API、架构、NFR、数据和测试部分则进一步使用 Microsoft、MDN、OWASP、OpenAPI、ISTQB 等资料扩展。
 
-完成全部内容后，你至少应能独立产出：
+---
 
-- 项目背景与范围说明
-- 术语表
-- 利益相关者清单
-- 业务流程图
-- 用例说明
-- 功能需求列表
-- 非功能需求列表
-- 数据字典与实体关系说明
-- API 规格
-- 权限矩阵
-- 状态机/时序说明
-- User Story 与 Acceptance Criteria
-- 错误码与异常场景
-- 需求追踪矩阵
-- 测试场景与验收清单
-- 需求变更记录
-- 一套可交付给开发、测试和 AI Coding Agent 的 Spec 包
+# 推荐学习方式
 
-## 6. 权威参考体系
+不要只“读完”。
 
-本仓库优先使用以下来源：
+每章必须完成：
 
-- **IREB / CPRE**：需求工程能力框架
-- **IBM Requirements Management**：需求管理、追踪、基线
-- **Atlassian Agile / Confluence**：用户故事、PRD、敏捷协作
-- **OMG UML / BPMN**：标准化建模
-- **Microsoft Learn / Azure Architecture Center**：软件、数据、API、架构与非功能需求
-- **MDN Web Docs**：HTTP 基础
-- **OpenAPI Initiative**：HTTP API 规格标准
-- **OWASP**：Web/API 安全
-- **ISTQB / CSTQB**：软件测试基础与中文大纲
-- **GitHub Docs**：Git、协作、Markdown 与 Mermaid
+```text
+阅读
+↓
+做例子
+↓
+完成练习
+↓
+加入自己的项目
+↓
+Review
+↓
+自测
+```
 
-详见 [权威学习资源索引](resources/权威学习资源索引.md)。
+只有产生工程工件才算真正学会。
 
-## 7. 一个重要原则
+---
 
-优秀的 Spec 不等于“写得长”。真正的质量标准是：
+# 最终能力目标
 
-**清晰 + 一致 + 完整 + 必要 + 可实现 + 可验证 + 可追踪 + 可维护。**
+面对：
 
-如果一句需求无法让开发和测试在不继续猜测的情况下达成相同理解，它就还不是合格的 Spec。
+> “我们想做一个 SaaS，让用户可以预约。”
+
+你不应该立刻开始写页面或代码。
+
+你应该能够自然地展开：
+
+```text
+Why
+↓
+Who
+↓
+Scope
+↓
+Rules
+↓
+Requirements
+↓
+Models
+↓
+API / Data
+↓
+Security / NFR
+↓
+Acceptance
+↓
+Testing
+↓
+Traceability
+↓
+Change
+↓
+Implementation / AI Coding
+↓
+Verification
+```
+
+这就是本仓库希望建立的 **Spec Engineering 思维方式**。
