@@ -1,0 +1,2 @@
+Business_Goal,Business_Rule,Requirement_ID,Requirement_Title,Design_or_API,Data,Story,Test_Case,Test_Result,Version,Status
+BG-001,BR-001,REQ-001,示例需求,POST /example,example_table,STORY-001,TC-001,Not Run,1.0,Draft
